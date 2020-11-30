@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sana App</title>
+    <meta name="description" content="Sana - Uma comunidade de terapeutas e clientes. Um aplicativo para a sua saúde.">
+    <meta name="keywords" content="Sana, App, Massagem, Terapia">
+    <meta name="robots" content="index, follow">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="icon" href="src/img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/terapStyle.css">
+</head>
+
+<body>
+
+    <div id ="profile" class="profile">
+        <nav class="navegation-user" id="navegation">
+            <a href="/"><img id="lex-logo-main" src="src/img/logo.png" alt="Lex App"></a>
+            <div id="config-btn"class="container" >
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </nav>
+
+        <div class="show">         
+
+            <div name="terapeuta-agenda" id="agenda" class="none">
+
+            </div>
+            <div name="terapeuta-instruções" id="instruções" class="none">
+
+            </div>
+            <div name="terapeuta-mensagens" id="mensagens" class="none">
+
+            </div>  
+            <div name="terapeuta-profile" id="perfil" class="div-terapeuta">
+                <div>    
+                    <div>
+                     <h2 id="nome-do-terapeuta">Nome do Terapeuta</h2>
+                     <textarea id="area-nome" cols="60" rows="1" class="none"></textarea>
+                     <br>
+                     <a style="font-size: 1em;" id="editar-nome">Editar Nome</a> 
+                     <a style="font-size: 1em;" id="salvar-nome" class="none">Salvar Nome</a> 
+                     <br>
+                     <br>
+                   
+                     
+                     <div class="caixa-imagem">
+                         <img class="user-img" src="src/img/default-user-image.png" alt="Foto do usuário">
+                     </div>
+                     <a id="trocar-foto">Trocar Foto do Perfil</a>
+                     <input id="input-foto-perfil"type="file">
+                </div>
+                 <div id="infos-de-contato">
+                     <p id="descrição-do-terapeuta">Descrição Sobre terapeuta e suas funções básicas como um ótimo profissional da porra toda</p>
+
+                     <textarea id="text-de-edição"resize="none" name="edit" cols="60" rows="10" class="none"></textarea>
+                     <br>
+                     <a id="editar-descrição">Editar Especificações</a> 
+                    <a id="salvar-descrição" class="none">Salvar</a>
+                 </div>
+            </div>
+            <div name="terapeuta-suporte" id="suporte" class="none">
+                
+            </div>
+        </div>
+       
+    </div>
+    <div  id="config-lista" class="config-lista">
+        <ul>
+            <li class="btn-agenda">
+               Agenda
+            </li>
+            <li class="btn-instruções">
+                Instruções
+            </li>
+            <li class="btn-mensagens">
+                Mensagens
+            </li>
+            <li class="btn-perfil">
+                Perfil                    
+            </li>
+            <li class="btn-suporte">
+                Suporte
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="./src/util/HttpRequest.js"></script>
+<script src="./src/models/terapeuta.js"></script>
+<script src="./src/controller/mainterapeuta/profileController.js"></script>
+<script src="./src/controller/mainterapeuta/appProfile.js"></script>
+</body>
+
+</html>  
+    
