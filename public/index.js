@@ -1,1 +1,1 @@
-var timoti = new RegistroController("Cadastramento","corpo-div");
+var Registro = new RegistroController("Cadastramento", "corpo-div");

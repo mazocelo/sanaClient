@@ -1,7 +1,6 @@
-
 class RegistroController {
 
-    constructor(formId,divCliente){
+    constructor(formId, divCliente) {
 
         //this._firebase = new Firebase()
         this.formElement = document.getElementById(formId);
@@ -10,21 +9,21 @@ class RegistroController {
     }
 
 
-    mandandoDados(){
+    mandandoDados() {
         this.formElement.addEventListener("submit", event => {
             event.preventDefault();
             let terapeuta = this.getNovoTerapeuta(this.formElement);
             this.insereTerapeutaDb(terapeuta);
-//            alert("Enviaremos um e-mail de confirmação.")
+            //            alert("Enviaremos um e-mail de confirmação.")
         });
     }
 
-    getNovoTerapeuta(formElement){  
+    getNovoTerapeuta(formElement) {
         let terapeuta = {};
-        [...formElement.elements].forEach((field)=>{
+        [...formElement.elements].forEach((field) => {
             terapeuta[field.name] = field.value;
         });
-        return new Terapeuta (
+        return new Terapeuta(
             terapeuta.nome,
             terapeuta.sobrenome,
             terapeuta.login,
@@ -35,25 +34,18 @@ class RegistroController {
             terapeuta.cpf,
             terapeuta.ps,
             terapeuta.senha
-            );
-        }
-    
-    insereTerapeutaDb (terapeuta){
-       return new Promise((s,f)=>{
-        terapeuta.save().then(()=>{
-            document.location.href ="/"
-            s()
-        }).catch(err=>{
-            alert(err)
-            f(err)
-        })
-       })
-           
-       
+        );
     }
-    
 
+    insereTerapeutaDb(terapeuta) {
+        return new Promise((s, f) => {
+            terapeuta.save().then(() => {
+                document.location.href = "/"
+                s()
+            }).catch(err => {
+                alert(err)
+                f(err)
+            })
+        })
+    }
 }
-
-
-
