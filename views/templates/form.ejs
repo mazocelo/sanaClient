@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
     <div id="pagina-cadastro">
         <img id="lex-logo-cad" style="margin-top: 20px; margin-bottom: 0;" src="src/img/logo.png" alt="Lex App">
@@ -40,7 +42,7 @@
                 <input type="password" name="senha" id="senha">
 
                 <br><br>
-                <input type="button" class="login-btn" onclick="pagina2();" value="Continuar">
+                <input type="button" class="sana-btn" onclick="pagina2();" value="Continuar">
                 <br>
                 <a id="inicioInput" href="/">Voltar</a>
 
@@ -62,7 +64,7 @@
                 <br>
                 <input type="number" name="cpf" id="cpf">
                 <br><br>
-                <input type="button" class="login-btn" onclick="paginafinal();" value="Continuar">
+                <input type="button" class="sana-btn" onclick="paginafinal();" value="Continuar">
                 <br>
                 <a onclick="pagina1()">Voltar</a>
             </div>
@@ -72,26 +74,27 @@
                 <br><br>
                 <textarea resize="none" rows="20" cols="40" name="ps" id="ps"></textarea>
                 <br><br>
-                <input type="submit" href="/" class="login-btn" value="Cadastrar">
-                 <br>
+                <input type="submit" href="/" class="sana-btn" value="Cadastrar">
+                <br>
                 <a onclick="pagina2()">Voltar</a>
-            
+
             </div>
 
-            
-            
+
+
         </form>
 
         <br>
-       
+
     </div>
-    
+
     <script src="./src/util/Firebase.js"></script>
     <script src="./src/util/HttpRequest.js"></script>
     <script type="text/javascript" src="./src/controller/pageController.js"></script>
-    <script type="text/javascript" src="./src/models/terapeuta.js"></script>   
+    <script type="text/javascript" src="./src/models/terapeuta.js"></script>
     <script type="text/javascript" src="./src/controller/RegistroController.js"></script>
     <script type="text/javascript" src="./index.js"></script>
-    
+
 </body>
+
 </html>

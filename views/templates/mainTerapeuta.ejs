@@ -29,15 +29,18 @@
         <div class="show-panel">
 
             <div name="terapeuta-agenda" id="agenda" class="div-agenda none">
-                <table name="agenda" class="calendario" id="calendarion">
+                <h2 class="titulo" id="titulo-do-ano">ANO</h2>
+                <h2 class="titulo" id="titulo-do-mes">MES</h2>
+                <table name="agenda" class="calendario" id="calendario">
                     <thead name="dias-da-semana" class="dias-da-semana">
-                        <td>Segunda-feira<br>Monday</td>
-                        <td>Terça-feira<br>Tuesday</td>
-                        <td>Quarta-feira<br>Wednesday</td>
-                        <td>Quinta-feira<br>Thursday</td>
-                        <td>Sexta-feira<br>Friday</td>
-                        <td>Sábado<br>Saturday</td>
-                        <td>Domingo<br>Sunday</td>
+                        <td>Domingo</td>
+                        <td>Segunda</td>
+                        <td>Terça</td>
+                        <td>Quarta</td>
+                        <td>Quinta</td>
+                        <td>Sexta</td>
+                        <td>Sábado</td>
+
                     </thead>
                     <tbody name="dias-do-mes" id="dias-do-mes" class="dias-do-mes">
                         <tr name="semana-um" id="semana-um">
@@ -76,7 +79,16 @@
                             <td></td>
                             <td></td>
                         </tr>
-                        <tr name="semana-quatro" id="semana-cinco">
+                        <tr name="semana-cinco" id="semana-cinco">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr name="semana-seis" id="semana-seis">
                             <td></td>
                             <td></td>
                             <td></td>
@@ -87,8 +99,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <button class="sana-btn agenda-btn" id="prev-month"><<</button>
+
+                <button class="sana-btn agenda-btn" id="today-month">Dia De Hoje</button>
+                <button class="sana-btn agenda-btn" id="next-month">>></button>
+
             </div>
-            <div name="terapeuta-instruções" id="instruções" class="none">
+            <div name="terapeuta-instruções" id="instruções" class="div-terapeuta">
 
             </div>
             <div name="terapeuta-mensagens" id="mensagens" class="none">

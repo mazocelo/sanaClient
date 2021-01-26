@@ -1,53 +1,70 @@
-var hoje = new Date();
-var data = hoje.getDate();
-var diaDaSemana = hoje.getDay();
-var mes = hoje.getMonth();
-var ano = hoje.getFullYear();
-
 class AgendaController {
 
 
-    constructor(usuario) {
+    constructor(usuario, hoje = new Date(), data = hoje.getDate(), diaDaSemana = hoje.getDay(), mes = hoje.getMonth(), ano = hoje.getFullYear()) {
         this.user = usuario;
         this.semanasEl = document.querySelectorAll("#dias-do-mes>tr");
 
+        this.anoEl = document.querySelector('#titulo-do-ano')
+        this.mesEl = document.querySelector('#titulo-do-mes')
         this.today = hoje
         this.data = data;
         this.diaDaSemana = diaDaSemana;
         this.mes = mes;
         this.ano = ano
-
+        this.nextMonthBtnEl = document.querySelector("#next-month")
+        this.previousMonthBtnEl = document.querySelector("#prev-month")
+        this.btnVoltaPraEsseMes = document.querySelector("#today-month")
         this.objMes = {}
 
         this.initiateMonth();
     }
-
     initiateMonth() {
         this.diasDoMes = new Array(this.quantosDias(this.mes));
         //funções pra preencher o objMes{}
-        this.contarPraFrente()
-        this.contarParaTrás();
-        console.log(this.objMes)
-            //desenhando
+        this.renderPraFrente(this.diaDaSemana, this.data, this.diasDoMes)
+        this.renderParaTras(this.diaDaSemana, this.data);
+        //console.log(this.objMes)
+        //inserindo no HTML
         this.insertNumberDays();
-
+        this.setMes(this.mes)
+        this.setAno(this.ano)
+            //muda de mes
+        this.nextMonthBtnInit()
+        this.prevMonthBtnInit()
+        this.mesDeHojeBtnInit()
+        console.log()
     }
+    quantosDias(mes) {
 
-
-    //funções pra preencher o objMes{}
-    contarPraFrente() {
-
-        var passagemDosDias = this.data
-        var numDodia = this.diaDaSemana
+        var meses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        var dias
+        meses.forEach((m, i) => {
+            if (mes == i) {
+                dias = m
+            }
+        })
+        return dias;
+    }
+    nomeDoDia(dia) {
+            var nomesDosDias = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado']
+            var nomeDoDia
+            nomesDosDias.forEach((d, i) => {
+                if (dia == i) {
+                    nomeDoDia = d;
+                }
+            })
+            return nomeDoDia
+        }
+        //funções pra preencher o objMes{}
+    renderPraFrente(numDodia, diaDeHoje, diasDoMes) {
         var i = 0
-        for (var x of this.diasDoMes) {
-
-            if (passagemDosDias - 1 == i) {
+        for (var x of diasDoMes) {
+            if (diaDeHoje - 1 == i) {
                 var num = this.nomeDoDia(numDodia)
-                var agora = { 'Dia do mês': passagemDosDias, 'Dia da semana': num, 'numero': numDodia }
+                var agora = { diaM: diaDeHoje, diaS: num, numero: numDodia }
                 this.objMes[i] = agora
-                passagemDosDias = passagemDosDias + 1
-
+                diaDeHoje = diaDeHoje + 1
                 if (numDodia >= 6) {
                     numDodia = 0;
                 } else {
@@ -57,39 +74,17 @@ class AgendaController {
             i++
         }
     }
-    contarParaTrás() {
-        var numDodia = this.diaDaSemana
-        for (var i = this.data - 1; i >= 0; i--) {
+    renderParaTras(numDodia, diaDeHoje) {
+        for (var i = diaDeHoje - 1; i >= 0; i--) {
             var num = this.nomeDoDia(numDodia)
-            var agora = { 'Dia do mês': i + 1, 'Dia da semana': num, 'numero': numDodia }
+            var agora = { diaM: i + 1, diaS: num, numero: numDodia }
             this.objMes[i] = agora
             if (numDodia < 1) {
                 numDodia = 6
             } else {
                 numDodia--
             }
-
         }
-    }
-    quantosDias(mes) {
-        var meses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        var dias
-        meses.forEach((m, i) => {
-            if (mes = i) {
-                dias = m
-            }
-        })
-        return dias;
-    }
-    nomeDoDia(dia) {
-        var nomesDosDias = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado']
-        var nomeDoDia
-        nomesDosDias.forEach((d, i) => {
-            if (dia == i) {
-                nomeDoDia = d;
-            }
-        })
-        return nomeDoDia
     }
     insertNumberDays() {
         var contagem = 0
@@ -97,24 +92,112 @@ class AgendaController {
         this.semanasEl.forEach((semana, i) => {
             var dias = [...semana.children]
             dias.forEach((td, i) => {
-                if (semana.id === "semana-um") {
-                    if (i == this.objMes[0].numero - 1 || inicia == true) {
+                if (this.diasDoMes.length - 1 < contagem) {
+
+                } else {
+                    if (semana.id === "semana-um") {
+                        if (i == this.objMes[0].numero || inicia == true) {
+
+                            var diaFormated = this.formatData(contagem)
+                            td.innerHTML = diaFormated // CRIAR FORMATAÇÃO
+                            contagem++
+                            inicia = true
+                        }
+                    } else {
                         var diaAtualEl = semana.children[i]
                         var diaFormated = this.formatData(contagem)
                         diaAtualEl.innerHTML = diaFormated // CRIAR FORMATAÇÃO
                         contagem++
-                        inicia = true
                     }
-                } else {
-                    var diaAtualEl = semana.children[i]
-                    var diaFormated = this.formatData(contagem)
-                    diaAtualEl.innerHTML = diaFormated // CRIAR FORMATAÇÃO
-                    contagem++
                 }
             })
         })
     }
     formatData(dia) {
-        return JSON.stringify(this.objMes[dia])
+        //console.log(this.objMes[dia].diaS)
+        var diaFormatado = JSON.stringify(this.objMes[dia].diaM)
+        diaFormatado = diaFormatado.replace(/['"]+/g, "") //REMOVER ASPAS
+        return diaFormatado
+    }
+    nextMonthBtnInit() {
+        this.nextMonthBtnEl.addEventListener('click', e => {
+            var ultimoDia = this.diasDoMes.length - 1
+            var ultimoDiaDiaArray = this.objMes[ultimoDia] // 
+            var primeirDiaDaSemana = ultimoDiaDiaArray.numero
+            primeirDiaDaSemana = primeirDiaDaSemana + 1
+            if (primeirDiaDaSemana > 6) primeirDiaDaSemana = 0
+
+            this.mes = this.mes + 1
+            if (this.mes > 11) this.mes = 0
+
+            var diasDesseMes = this.quantosDias(this.mes)
+            var diasDoMes = new Array(diasDesseMes);
+
+            this.diasDoMes = diasDoMes
+
+            console.log(ultimoDia)
+            this.objMes = {}
+                //onsole.log(primeirDiaDaSemana, 1, diasDoMes)
+            this.renderPraFrente(primeirDiaDaSemana, 1, diasDoMes)
+            this.cleanCalendar()
+            this.setMes(this.mes)
+            this.insertNumberDays()
+            console.log(this.objMes)
+        })
+    }
+    cleanCalendar() {
+        this.semanasEl.forEach((semana, i) => {
+            var dias = [...semana.children]
+            dias.forEach((td, i) => {
+                td.innerHTML = ""
+
+            })
+        })
+    }
+    prevMonthBtnInit() {
+        this.previousMonthBtnEl.addEventListener('click', e => {
+            var ultimoDia = this.objMes[0].numero
+            ultimoDia = ultimoDia - 1
+            if (ultimoDia < 0) ultimoDia = 6
+
+            this.mes = this.mes - 1
+
+            if (this.mes < 0) this.mes = 11
+
+            var diasNesseMes = this.quantosDias(this.mes)
+            var diasDoMes = new Array(diasNesseMes);
+            this.diasDoMes = diasDoMes
+            this.objMes = {}
+            this.renderParaTras(ultimoDia, diasNesseMes)
+            this.cleanCalendar()
+            this.setMes(this.mes)
+            this.setAno(this.ano)
+            this.insertNumberDays()
+        })
+    }
+    setMes(mes) {
+        var mesesDoAno = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+        mesesDoAno.forEach((m, i) => {
+            if (i == mes) {
+                this.mesEl.innerHTML = m
+            }
+        })
+    }
+    setAno(ano) {
+        this.anoEl.innerHTML = ano
+    }
+    mesDeHojeBtnInit() {
+        this.btnVoltaPraEsseMes.addEventListener('click', e => {
+            var hoje = new Date
+            this.mes = hoje.getMonth();
+            this.data = hoje.getDate()
+            this.diaDaSemana = hoje.getDay()
+            this.diasDoMes = new Array(this.quantosDias(this.mes));
+            this.cleanCalendar()
+            this.renderPraFrente(this.diaDaSemana, this.data, this.diasDoMes)
+            this.renderParaTras(this.diaDaSemana, this.data);
+            this.insertNumberDays()
+            console.log(this.objMes)
+        })
     }
 }

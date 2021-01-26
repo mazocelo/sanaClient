@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Maven+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
-
 body {
     margin: 0;
     padding: 0;
@@ -10,44 +9,51 @@ body {
     color: rgb(100, 93, 136);
     font-family: 'Maven Pro', sans-serif;
 }
+
 #login {
     margin: auto;
     font-size: 1.6em;
 }
-textarea{
-    resize:none;
+
+textarea {
+    resize: none;
 }
-a{
+
+a {
     color: rgb(100, 93, 136);
     font-family: 'Maven Pro', sans-serif;
     text-decoration: none;
     font-size: 1.2em;
 }
+
 #lex-logo {
     width: 50%;
     margin: 20px 0px 0px 0px;
     border-radius: 50%;
-    box-shadow: 0px 1px 4px  rgb(212, 209, 228);
+    box-shadow: 0px 1px 4px rgb(212, 209, 228);
 }
 
 #titulo {
     font-family: 'Poiret One', cursive;
-    text-shadow: 2px 2px 5px  rgb(158, 152, 197);
+    text-shadow: 2px 2px 5px rgb(158, 152, 197);
     font-size: 3.8em;
     margin: 0;
     padding: 0;
 }
+
 #sub-titulo {
-   color: rgb(189, 188, 194);
-   font-size: 1.2em;
+    color: rgb(189, 188, 194);
+    font-size: 1.2em;
 }
-#pagina-login{
+
+#pagina-login {
     width: 420px;
     margin: 50px auto;
     padding: 10px;
     border: 3px solid;
     border-radius: 4%;
-}     
+}
+
 input {
     text-align: center;
     font-size: 1em;
@@ -55,54 +61,63 @@ input {
     height: 40px;
     border-radius: 15px;
 }
-.login-btn{
+
+.sana-btn {
     margin-top: 10px;
     border: none;
     background-color: rgb(100, 93, 136);
     color: rgb(238, 238, 236);
 }
+
 nav {
     z-index: 1;
     display: flex;
     margin: auto;
     background-color: rgb(246, 251, 253);
-    box-shadow: 0px 1px 12px  rgb(246, 251, 253);
+    box-shadow: 0px 1px 12px rgb(246, 251, 253);
 }
 
 #lex-logo-cad {
     width: 12%;
     border-radius: 50%;
-    box-shadow: 0px 1px 3px  rgb(200, 199, 206);
+    box-shadow: 0px 1px 3px rgb(200, 199, 206);
 }
+
 .user-img {
     width: 40%;
     border-radius: 50%;
 }
+
 .perfil-img {
     margin-top: 220px;
-    padding:100px;
+    padding: 100px;
     border-radius: 50%;
     height: 300px;
     width: 300px;
 }
+
+
 /*
 .navegation-user{
     
 }
 */
+
 #titulo-main {
     font-family: 'Poiret One', cursive;
-    text-shadow: 2px 2px 10px  rgb(44, 41, 63);
+    text-shadow: 2px 2px 10px rgb(44, 41, 63);
     font-size: 2em;
     margin: 20px 0;
-} 
+}
 
 #Cadastramento label {
     font-size: 1.6em;
 }
+
 #ps {
     border-radius: 10px;
 }
+
 #cadastro1 {
     display: block;
 }
@@ -115,10 +130,8 @@ nav {
     display: none;
 }
 
-#criar-conta{
-    margin:20px;  
-    padding: 20px;  
+#criar-conta {
+    margin: 20px;
+    padding: 20px;
     padding-bottom: 20px;
 }
-
-
