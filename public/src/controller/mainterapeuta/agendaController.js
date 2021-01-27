@@ -17,9 +17,13 @@ class AgendaController {
         this.btnVoltaPraEsseMes = document.querySelector("#today-month")
         this.objMes = {}
 
+
+
         this.initiateMonth();
     }
     initiateMonth() {
+        this.setAno(this.ano)
+        this.setMes(this.mes)
         this.diasDoMes = new Array(this.quantosDias(this.mes));
         //funções pra preencher o objMes{}
         this.renderPraFrente(this.diaDaSemana, this.data, this.diasDoMes)
@@ -27,9 +31,8 @@ class AgendaController {
         //console.log(this.objMes)
         //inserindo no HTML
         this.insertNumberDays();
-        this.setMes(this.mes)
-        this.setAno(this.ano)
-            //muda de mes
+
+        //muda de mes
         this.nextMonthBtnInit()
         this.prevMonthBtnInit()
         this.mesDeHojeBtnInit()
@@ -38,6 +41,7 @@ class AgendaController {
     quantosDias(mes) {
 
         var meses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        if (!this.bisesto) meses[1] = 29
         var dias
         meses.forEach((m, i) => {
             if (mes == i) {
@@ -128,21 +132,22 @@ class AgendaController {
             if (primeirDiaDaSemana > 6) primeirDiaDaSemana = 0
 
             this.mes = this.mes + 1
-            if (this.mes > 11) this.mes = 0
+            if (this.mes > 11) this.mes = 0, this.ano = this.ano + 1
 
             var diasDesseMes = this.quantosDias(this.mes)
             var diasDoMes = new Array(diasDesseMes);
 
             this.diasDoMes = diasDoMes
 
-            console.log(ultimoDia)
             this.objMes = {}
                 //onsole.log(primeirDiaDaSemana, 1, diasDoMes)
+
+            this.setAno(this.ano)
+            this.setMes(this.mes)
             this.renderPraFrente(primeirDiaDaSemana, 1, diasDoMes)
             this.cleanCalendar()
-            this.setMes(this.mes)
             this.insertNumberDays()
-            console.log(this.objMes)
+                //console.log(this.objMes)
         })
     }
     cleanCalendar() {
@@ -162,16 +167,16 @@ class AgendaController {
 
             this.mes = this.mes - 1
 
-            if (this.mes < 0) this.mes = 11
+            if (this.mes < 0) this.mes = 11, this.ano = this.ano - 1
 
             var diasNesseMes = this.quantosDias(this.mes)
             var diasDoMes = new Array(diasNesseMes);
             this.diasDoMes = diasDoMes
             this.objMes = {}
+            this.setAno(this.ano)
+            this.setMes(this.mes)
             this.renderParaTras(ultimoDia, diasNesseMes)
             this.cleanCalendar()
-            this.setMes(this.mes)
-            this.setAno(this.ano)
             this.insertNumberDays()
         })
     }
@@ -182,8 +187,15 @@ class AgendaController {
                 this.mesEl.innerHTML = m
             }
         })
+
     }
     setAno(ano) {
+        if (this.ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0) {
+            this.bisesto = false
+        } else {
+            this.bisesto = true
+        }
+
         this.anoEl.innerHTML = ano
     }
     mesDeHojeBtnInit() {
@@ -192,12 +204,17 @@ class AgendaController {
             this.mes = hoje.getMonth();
             this.data = hoje.getDate()
             this.diaDaSemana = hoje.getDay()
+            this.ano = hoje.getFullYear()
             this.diasDoMes = new Array(this.quantosDias(this.mes));
+
+            this.setAno(this.ano)
+            this.setMes(this.mes)
             this.cleanCalendar()
+
             this.renderPraFrente(this.diaDaSemana, this.data, this.diasDoMes)
             this.renderParaTras(this.diaDaSemana, this.data);
             this.insertNumberDays()
-            console.log(this.objMes)
+                //console.log(this.objMes)
         })
     }
 }
