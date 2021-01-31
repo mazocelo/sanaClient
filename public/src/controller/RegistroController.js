@@ -14,7 +14,7 @@ class RegistroController {
             event.preventDefault();
             let terapeuta = this.getNovoTerapeuta(this.formElement);
             this.insereTerapeutaDb(terapeuta);
-            //            alert("Enviaremos um e-mail de confirmação.")
+            //alert("Enviaremos um e-mail de confirmação.")
         });
     }
 
