@@ -11,7 +11,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="icon" href="src/img/logo.png">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -20,7 +19,6 @@
         <form id="Cadastramento" action="">
             <h2>Criar Conta</h2>
             <div id="cadastro1">
-
                 <label for="nome">Nome</label>
                 <br>
                 <input type="text" name="nome" id="nome">
@@ -44,57 +42,46 @@
                 <br><br>
                 <input type="button" class="sana-btn" onclick="pagina2();" value="Continuar">
                 <br>
+                <br>
                 <a id="inicioInput" href="/">Voltar</a>
-
-
             </div>
-            <div id="cadastro2"> <label for="dnasc">Data de Nascimento</label>
+            <div id="cadastro2">
+                <label for="dnasc">Data de Nascimento</label>
                 <br>
                 <input type="date" name="dnasc" id="dnasc">
                 <br>
                 <label for="tel1">Telefone 1</label>
                 <br>
-                <input type="number" name="tel1" id="tel1">
-                <br>
-                <label for="tel1">Telefone 2</label>
-                <br>
-                <input type="number" name="tel2" id="tel2">
+                <input type="number" name="telefone" id="telefone">
                 <br>
                 <label for="cpf">CPF</label>
                 <br>
-                <input type="number" name="cpf" id="cpf">
+                <input type="number" name="cpf" class="cpf-mask" id="cpf">
                 <br><br>
                 <input type="button" class="sana-btn" onclick="paginafinal();" value="Continuar">
                 <br>
+                <br>
                 <a onclick="pagina1()">Voltar</a>
             </div>
-
             <div id="cadastrofinal">
                 <label for="ps">Fale sobre você esuas especiliades como terapeuta</label>
                 <br><br>
-                <textarea resize="none" rows="20" cols="40" name="ps" id="ps"></textarea>
+                <textarea resize="none" rows="10" cols="50" name="ps" id="ps"></textarea>
                 <br><br>
                 <input type="submit" href="/" class="sana-btn" value="Cadastrar">
                 <br>
+                <br>
                 <a onclick="pagina2()">Voltar</a>
-
             </div>
-
-
-
         </form>
-
         <br>
-
     </div>
-
     <script src="./src/util/Firebase.js"></script>
     <script src="./src/util/HttpRequest.js"></script>
-    <script type="text/javascript" src="./src/controller/pageController.js"></script>
-    <script type="text/javascript" src="./src/models/terapeuta.js"></script>
-    <script type="text/javascript" src="./src/controller/RegistroController.js"></script>
+    <script type="text/javascript" src="./src/controller/cadastro/pageFormController.js"></script>
+    <script type="text/javascript" src="./src/models/usuario.js"></script>
+    <script type="text/javascript" src="./src/controller/cadastro/RegistroController.js"></script>
     <script type="text/javascript" src="./index.js"></script>
-
 </body>
 
 </html>

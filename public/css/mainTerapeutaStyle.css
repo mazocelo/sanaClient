@@ -113,8 +113,8 @@ li {
 }
 
 .dias-do-mes td {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     box-shadow: 0px 0px 3px rgb(200, 199, 206);
     border-radius: 10px;
     border: rgb(100, 93, 136) solid 3px;
@@ -126,9 +126,6 @@ thead {
 }
 
 .dias-do-mes td:hover {
-    width: 150px;
-    height: 150px;
-    font-size: 3em;
     cursor: pointer;
 }
 
@@ -136,6 +133,28 @@ thead {
     font-size: 2em;
     padding: 10px;
     margin: 10px;
+}
+
+
+/*AGENDA HORAS*/
+
+.lista-horarios {
+    font-size: 2em;
+}
+
+.horarios {
+    margin: auto;
+    padding: 10px;
+}
+
+.th-hora {
+    padding: 10px;
+    border: 1px solid rgb(100, 93, 136);
+}
+
+.td-mark {
+    padding-left: 20px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:540px) {

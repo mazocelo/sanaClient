@@ -36,7 +36,7 @@ class AgendaController {
         this.mesDeHojeBtnInit();
         this.btnDiaInitialize();
         this.initZoomDay()
-        console.log(this.user)
+            //console.log(this.user)
     }
     quantosDias(mes) {
         var dias
@@ -198,18 +198,21 @@ class AgendaController {
         })
     }
     routineRender() {
-        this.cleanCalendar();
-        this.setAno(this.ano);
-        this.setMes(this.mes);
-        this.insertNumberDays();
-    }
+            this.cleanCalendar();
+            this.setAno(this.ano);
+            this.setMes(this.mes);
+            this.insertNumberDays();
+        }
+        //mostrando o dia selecionado
     addEventDayShow(tdEl) {
         tdEl.addEventListener('click', e => {
             if (tdEl.dataset.data == 0) {} else {
                 this.agendaDiv.classList.add("none");
                 this.agendaDiv.classList.remove("div-terapeuta");
                 this.telaDia.classList.add("div-terapeuta");
+                this.telaDia.removeChild(diaAtual)
                 var data = document.createElement('div')
+                data.id = "diaAtual"
                 var infos = tdEl.dataset.data
                 data.innerHTML = infos
                 this.telaDia.appendChild(data)

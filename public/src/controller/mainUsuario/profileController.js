@@ -1,4 +1,4 @@
-class TherapistProfileController {
+class UserProfileController {
     constructor(usuario) {
 
         this.usuario = usuario;
@@ -10,29 +10,16 @@ class TherapistProfileController {
     }
     initEvents() {
         //perfil
+        console.log(this.usuario)
         this.nomeEl.innerHTML = this.usuario.nome
+            //menu sanduiche
+        this.changeList()
             //perfil options
         this.trocarDeFotoBtn()
-        this.changeList()
         this.perfilBtns()
+        this.fotoPerfilEl = document.querySelector(".user-img")
 
-    }
 
-    trocarDeFotoBtn() {
-        let btn = document.querySelector("#trocar-foto")
-        let input = document.querySelector("#input-foto-perfil")
-        btn.addEventListener("click", () => {
-            input.click()
-        })
-        input.addEventListener("change", () => {
-            let file = input.files[0]
-            var reader = new FileReader();
-            reader.onload = () => {
-                reader.result;
-            };
-            reader.readAsDataURL(file)
-            console.log("enviar correto a foto para o ID")
-        })
     }
 
     changeList() {
@@ -42,6 +29,8 @@ class TherapistProfileController {
             configBtn.classList.toggle("change");
             configList.classList.toggle("list")
         })
+
+
         var agenda = document.querySelector("#agenda")
         var instruções = document.querySelector("#instruções")
         var mensagens = document.querySelector("#mensagens")
@@ -53,8 +42,8 @@ class TherapistProfileController {
         var btnMensagens = document.querySelector(".btn-mensagens")
         var btnPerfil = document.querySelector(".btn-perfil")
         var btnSuporte = document.querySelector(".btn-suporte")
-
-
+        var btnLogout = document.querySelector(".btn-logout")
+        var logoutLink = document.querySelector("#logout-link")
         btnAgenda.addEventListener("click", () => {
             this.allNone();
             this.oneBlock(agenda)
@@ -78,6 +67,10 @@ class TherapistProfileController {
         btnSuporte.addEventListener('click', () => {
             this.allNone();
             this.oneBlock(suporte)
+        })
+        btnLogout.addEventListener('click', () => {
+            this.allNone();
+            logoutLink.click()
         })
     }
     allNone() {
@@ -131,4 +124,32 @@ class TherapistProfileController {
                 // ENVIAR NOVOS DADOS
         })
     }
+    trocarDeFotoBtn() {
+        var btn = document.querySelector("#trocar-foto")
+        var input = document.querySelector("#input-foto-perfil")
+        var saveFotoBtn = document.querySelector("#save-foto-btn")
+
+        btn.addEventListener("click", () => {
+            input.click()
+        })
+        input.addEventListener("change", () => {
+            var file = input.files[0]
+            var reader = new FileReader();
+            reader.onload = () => {
+                this.fotoPerfilEl.src = reader.result;
+            };
+            reader.readAsDataURL(file)
+            saveFotoBtn.classList.remove('none')
+        })
+
+        saveFotoBtn.addEventListener('click', (e) => {
+            /**
+             * this.usuario.changePicture(file)
+             */
+            saveFotoBtn.classList.add('none')
+        })
+    }
+
+
+
 }

@@ -28,10 +28,19 @@
 
         <div class="show-panel">
             <div id="day-selected" class=" none">
-                <h2>Day</h2>
-                <h2>Week</h2>
-                <h2>Month</h2>
+                <h2 id="title-day-selected">Day</h2>
+                <h2 id="title-week-selected">Week</h2>
+                <h2 id="title-month-selected">Month</h2>
                 <button id="btn-voltar-calendario" class="sana-btn">Voltar</button>
+                <div id="diaAtual"></div>
+                <div class="lista-horarios">
+                    <table class="horarios">
+                        <tr class="tr-hora">
+                            <th class="th-hora">8:00</th>
+                            <td class="td-mark">Marcar Horario</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div name="terapeuta-agenda" id="agenda" class="div-agenda none">
 
@@ -134,15 +143,17 @@
                             <img class="user-img" src="src/img/default-user-image.png" alt="Foto do usuário">
                         </div>
                         <a id="trocar-foto">Trocar Foto do Perfil</a>
+                        <br>
+                        <button class="sana-btn none" id="save-foto-btn">Salvar Foto</button>
                         <input id="input-foto-perfil" type="file">
                     </div>
                     <div id="infos-de-contato">
-                        <p id="descrição-do-terapeuta">Descrição Sobre terapeuta e suas funções básicas como um ótimo profissional da porra toda</p>
+                        <p id="descrição-da-saude">Você tem algum problema de saúde? Descreva aqui!</p>
 
                         <textarea id="text-de-edição" resize="none" name="edit" cols="60" rows="10" class="none"></textarea>
                         <br>
-                        <a id="editar-descrição">Editar Especificações</a>
-                        <a id="salvar-descrição" class="none">Salvar</a>
+                        <button class="sana-btn" id="editar-descrição">Editar Especificações</button>
+                        <button class="sana-btn none" id="salvar-descrição">Salvar</button>
                     </div>
                 </div>
                 <div name="terapeuta-suporte" id="suporte" class="none">
@@ -168,15 +179,19 @@
                 <li class="btn-suporte">
                     Suporte
                 </li>
+                <li class="btn-logout">
+                    <a id="logout-link" class="none" href="/logout"></a>
+                    Log Out
+                </li>
             </ul>
         </div>
     </div>
     <script src="./src/util/HttpRequest.js"></script>
-    <script src="./src/models/terapeuta.js"></script>
+    <script src="./src/models/usuario.js"></script>
 
-    <script src="./src/controller/mainterapeuta/agendaController.js"></script>
-    <script src="./src/controller/mainterapeuta/profileController.js"></script>
-    <script src="./src/controller/mainterapeuta/appProfile.js"></script>
+    <script src="./src/controller/mainUsuario/agendaController.js"></script>
+    <script src="./src/controller/mainUsuario/profileController.js"></script>
+    <script src="./src/controller/mainUsuario/appProfile.js"></script>
 </body>
 
 </html>

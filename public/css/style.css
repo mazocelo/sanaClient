@@ -15,8 +15,9 @@ body {
     font-size: 1.6em;
 }
 
-textarea {
+#ps {
     resize: none;
+    font-size: 2.5em;
 }
 
 a {
@@ -62,6 +63,10 @@ input {
     border-radius: 15px;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .sana-btn {
     margin-top: 10px;
     border: none;
@@ -69,7 +74,7 @@ input {
     color: rgb(238, 238, 236);
 }
 
-nav {
+.navegation-user {
     z-index: 1;
     display: flex;
     margin: auto;
